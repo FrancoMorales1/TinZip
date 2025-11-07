@@ -1,0 +1,112 @@
+//////////////////////////////
+            BACK
+/////////////////////////////
+
+- Formato JSON del archivo:
+  - nombre_usuario
+  - nombre (archivo)
+  - tamaño
+  - Titulo (opcional)
+  - Descripcion (opcional)
+  - fecha de creación
+  - contraseña encriptada
+  ========================
+  TODO — Compartir archivos temporalmente
+  ========================
+
+  Resumen
+  -------
+  Plataforma para subir archivos, cifrarlos en un ZIP y compartirlos mediante enlaces temporales (expiran a 72h). La persistencia será un archivo JSON en el servidor.
+
+  BACK (esquema JSON)
+  --------------------
+  Formato recomendado para el registro de un paquete de descarga:
+
+  - id (UUID)
+  - nombre_archivo_original (string)
+  - nombre_zip (string)
+  - tamaño_bytes (number)
+  - titulo (string | null)
+  - descripcion (string | null)
+  - fecha_creacion (ISO string)
+  - contraseña_hash (string)   # hash seguro (p.ej. argon2/bcrypt) — no almacenar la contraseña en claro
+  - expiracion (ISO string)
+  - es_valido (boolean)
+  - destinatarios (array[string] | null)
+
+  Notas BACK:
+  - Mantener metadatos en un JSON ("db.json") para simplicidad.
+  - No almacenar contraseñas en claro. Guardar sólo el hash y el salt.
+
+  FRONT (comportamiento y formulario)
+  ----------------------------------
+  Campos del formulario de subida:
+
+  - origen (email o nombre) — obligatorio
+  - destinatarios (array de emails) — opcional
+  - contraseña (string) — obligatorio o generar automática
+  - archivos (drag & drop) — admitir 1..N archivos (definir límite, p.ej. 200 MB total)
+  - título — opcional
+  - descripción — opcional
+
+  Comportamiento de contraseña:
+  - Checkbox: "Generar contraseña automática" — si está marcada, se genera un UUID y el campo de texto queda deshabilitado.
+  - Validación: exigir contraseña >= 6 caracteres para habilitar descarga (configurable).
+
+  Flujo de cliente al subir:
+  1) Seleccionar archivos y completar campos.
+  2) (Opcional) Comprimir y cifrar en el cliente — alternativa: cifrar en el servidor si se prefiere.
+  3) Hashear la contraseña en el cliente (o pasar la contraseña en TLS y hashearla servidor-side).
+  4) POST multipart/form-data a /api/upload con el ZIP cifrado + metadatos JSON.
+  5) Mostrar enlace de descarga retornado por la API.
+
+  API (endpoints sugeridos)
+  ------------------------
+  - POST /api/upload — subir paquete (recibe ZIP cifrado o archivos a comprimir)
+    - request: form-data { origin, destinatarios, title, description, password_hash, file }
+    - response: { id, downloadLink }
+
+  - POST /api/validate — validar contraseña / obtener metadata
+    - request: { id, password_hash }
+    - response: { result: "ok" | "expired" | "invalid", metadata? }
+
+  - GET /download/:id — descarga (puede requerir password en query/body según diseño)
+
+  Consigna y requisitos técnicos
+  -----------------------------
+  - Framework: Next.js
+  - Persistencia simple: archivos JSON
+  - Priorizar seguridad y buenas prácticas
+  - No implementar sistema completo de auth (usar UUIDs temporales si hace falta)
+
+  Pasos de implementación (alto nivel)
+  ----------------------------------
+  1) UI de subida (form + validaciones)
+  2) Compresión y cifrado (client o server)
+  3) Hash de contraseña y persistencia en JSON
+  4) Generación de enlace único (UUID)
+  5) Endpoint para validar contraseña y servir ZIP
+  6) Expiración automática (72h) — limpieza periódica o check a la lectura
+
+  Checklist (tareas concretas)
+  ---------------------------
+  - [ ] Diseñar esquema JSON y utilidades de lectura/escritura
+  - [ ] Crear endpoint POST /api/upload
+  - [ ] Implementar compresión ZIP y cifrado (preferible server-side para simplificar)
+  - [ ] Guardar ZIP en /public/uploads o en carpeta dedicada
+  - [ ] Generar y devolver link de descarga (UUID)
+  - [ ] Implementar validación de contraseña en /api/validate
+  - [ ] Implementar expiración (72h) y tarea de limpieza
+  - [ ] UI: formulario con drag & drop, generación automática de contraseña y validaciones
+  - [ ] UI: página de descarga que pide contraseña y descarga el ZIP
+  - [ ] Documentar decisiones técnicas en README o comentarios
+
+  Notas y consideraciones
+  ------------------------
+  - Decidir si el cifrado se hace client-side (mejor privacidad) o server-side (más simple). Para client-side, se transmiten bytes cifrados al servidor; el servidor sólo almacena y sirve el blob cifrado.
+  - Para la persistencia simple usar un archivo `db.json` y APIs que lo lean/actualicen de forma atómica.
+  - Limitar tamaños y validar tipos MIME en el servidor.
+
+  Última acción
+  --------------
+  Formateado para claridad. Si querés que lo convierta a Markdown (`TODO.md`) o que separe en issues/tickets, lo hago.
