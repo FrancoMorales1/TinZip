@@ -11,6 +11,7 @@ import { InvalidPassword } from "@/app/components/download/test/InvalidPassword"
 import { FileNotFound } from "@/app/components/download/test/FileNotFound";
 import { use } from "react";
 import { hashPassword } from "@/utils/hashPassword";
+import { decryptZip } from "@/utils/decryptZip";
 
 type FileMetadata = {
   id: string;
@@ -70,36 +71,59 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
   };
 
   const getAndDownloadFile = async () => {
-    setDownloading(true); // Activa estado de carga (útil si tu SuccessModal muestra un spinner)
+    setDownloading(true);
     try {
+      // Hash de contraseña
       const password_hash = await hashPassword(password);
-       const res = await fetch(`/api/download/${id}?hash=${password_hash}`);
+      const res = await fetch(`/api/download/${id}?hash=${password_hash}`);
 
       if (!res.ok) {
-        if (res.status === 410) { setStatus("expired"); return; }
-        if (res.status === 401) { setStatus("invalidPass"); return; }
-        if (res.status === 404) { setStatus("notFound"); return; }
-        throw new Error("Error al descargar el archivo");
+        // ... (tu manejo de errores 401, 404, etc.)
+        if (res.status === 401) setStatus("invalidPass");
+        else if (res.status === 404) setStatus("notFound");
+        else if (res.status === 410) setStatus("expired");
+        else setStatus("error");
+        return;
       }
 
-      const blob = await res.blob();
-      const url = window.URL.createObjectURL(blob);
+      // --- ¡AQUÍ EMPIEZA LA MAGIA! ---
+
+      // 3. Obtenemos el blob ENCRIPTADO
+      const encryptedBlob = await res.blob();
+      
+      // 4. Lo convertimos a un ArrayBuffer
+      const encryptedBuffer = await encryptedBlob.arrayBuffer();
+
+      // 5. ¡Lo desciframos! (Usando la contraseña del state, NO el hash)
+      const decryptedBuffer = await decryptZip(encryptedBuffer, password);
+
+      // 6. Creamos un NUEVO blob, pero esta vez con el .zip real (descifrado)
+      const decryptedZipBlob = new Blob([decryptedBuffer], { type: "application/zip" });
+      
+      // 7. Creamos la URL de descarga para el blob DESCIFRADO
+      const url = window.URL.createObjectURL(decryptedZipBlob);
       const a = document.createElement('a');
       a.style.display = 'none';
       a.href = url;
-      a.download = metadata?.filename || 'archivo_descargado.zip';
+      a.download = metadata?.filename || 'archivo.zip'; // Usa el nombre de los metadatos
       document.body.appendChild(a);
       a.click();
 
+      // 8. Limpieza
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
-      
-      // Opcional: Redirigir al inicio después de unos segundos si quieres
-      // setTimeout(() => router.push("/"), 2000);
 
+      // --- FIN DE LA MAGIA ---
+      
     } catch (err: any) {
-      console.error("Error en la descarga:", err);
-      setStatus("error");
+      console.error(err);
+      
+      // 9. Captura el error de descifrado
+      if (err.message.includes("Contraseña incorrecta")) {
+        setStatus("invalidPass");
+      } else {
+        setStatus("error");
+      }
     } finally {
       setDownloading(false);
     }
