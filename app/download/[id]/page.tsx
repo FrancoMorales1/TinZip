@@ -236,13 +236,13 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
         // Manejo de distintos errores
         if (res.status === 401) setStatus("invalidPass");
         else if (res.status === 404) setStatus("notFound");
-        else if (res.status === 410) setStatus("expired"); // 410 Gone
+        else if (res.status === 410) setStatus("expired");
         else setStatus("error");
         return;
       }
 
       // Éxito
-      setMetadata(data);
+      setMetadata(data.file);
       setStatus("success");
     } catch (err: any) {
       console.error(err);

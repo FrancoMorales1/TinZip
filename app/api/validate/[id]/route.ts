@@ -2,6 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { getFileRecordById, getRecordForPasswordCheck } from "@/lib/database/FileServices";
 import mongoose from "mongoose";
 
+export interface FileRecordInfoApiResponse {
+  originalFilename: string,
+  ownerEmail: string,
+  fileSizeInBytes: number,
+  title?: string,
+  description?: string,
+  createdAt: string,
+  expiresAt: string
+}
+
 export async function GET(
   request: NextRequest,
   { params }: { params: { id: string } }  // params sí viene separado
@@ -30,12 +40,15 @@ export async function GET(
     }
     // Si el archivo esta expirado, devuelvo valid porq la password es correcta pero expiro
     if (record.isExpired) {
-      return NextResponse.json({ response: "valid", file: null }, { status: 200 })
+      return NextResponse.json({ error: "El archivo expiro" }, { status: 410 })
     }
     // Consigo info completa
     const recordInfo = await getFileRecordById(id);
     if (!recordInfo) return NextResponse.json({ response: "error", file: null }, { status: 500 }); // No deberia pasar
 
+    const miliSecondsExpire = Number(process.env.MILI_SEG_EXP) || 72 * 60 * 60 * 1000;
+    const expiresAtMiliSeconds = recordInfo.createdAt.getTime() + miliSecondsExpire;
+    const expiresAt = new Date(expiresAtMiliSeconds);
     // Todo bien, devuelvo
     return NextResponse.json({
       response: "valid",
@@ -45,6 +58,8 @@ export async function GET(
         fileSizeInBytes: recordInfo.fileSizeInBytes,
         title: recordInfo.title || recordInfo.originalFilename,
         description: recordInfo.description || '',
+        createdAt: recordInfo.createdAt,
+        expiresAt: expiresAt 
       },
     });
   } catch (error) {
