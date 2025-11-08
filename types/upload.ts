@@ -17,5 +17,5 @@ export interface UploadRequestData {
 }
 
 export interface UploadResponse {
-  downloadLink: string
+  link: string
 }

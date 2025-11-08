@@ -8,6 +8,7 @@ export interface IFileRecord {
   title?: string;
   description?: string;
   passwordHash: string;
+  gridFsId: mongoose.Types.ObjectId;
 }
 
 /**
@@ -47,6 +48,10 @@ const FileRecordSchema: Schema<IFileRecordDocument> = new Schema({
     type: String,
     required: true,
     select: false, // Ocultar por defecto en las consultas
+  },
+  gridFsId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
   },
 }, {
   // Añade createdAt y updatedAt
