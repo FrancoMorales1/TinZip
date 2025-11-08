@@ -3,76 +3,84 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette for file sharing app with blue/indigo theme */
-  --background: oklch(0.99 0.005 240);
-  --foreground: oklch(0.15 0.02 250);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.15 0.02 250);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.15 0.02 250);
-  --primary: oklch(0.55 0.22 250);
-  --primary-foreground: oklch(0.99 0.005 240);
-  --secondary: oklch(0.95 0.015 250);
-  --secondary-foreground: oklch(0.15 0.02 250);
-  --muted: oklch(0.96 0.01 250);
-  --muted-foreground: oklch(0.5 0.02 250);
-  --accent: oklch(0.94 0.02 265);
-  --accent-foreground: oklch(0.15 0.02 250);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.99 0.005 240);
-  --border: oklch(0.9 0.01 250);
-  --input: oklch(0.9 0.01 250);
-  --ring: oklch(0.55 0.22 250);
-  --chart-1: oklch(0.55 0.22 250);
-  --chart-2: oklch(0.6 0.2 270);
-  --chart-3: oklch(0.65 0.18 230);
-  --chart-4: oklch(0.7 0.15 290);
-  --chart-5: oklch(0.5 0.25 240);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Cyberpunk/Matrix theme - Neon colors with dark background */
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.85 0.15 150);
+  --card: oklch(0.12 0.02 180);
+  --card-foreground: oklch(0.85 0.15 150);
+  --popover: oklch(0.12 0.02 180);
+  --popover-foreground: oklch(0.85 0.15 150);
+  --primary: oklch(0.7 0.25 150);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.65 0.22 180);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.15 0.02 180);
+  --muted-foreground: oklch(0.6 0.12 150);
+  --accent: oklch(0.7 0.25 320);
+  --accent-foreground: oklch(0.1 0 0);
+  --destructive: oklch(0.6 0.25 0);
+  --destructive-foreground: oklch(0.1 0 0);
+  --border: oklch(0.3 0.15 150);
+  --input: oklch(0.15 0.05 180);
+  --ring: oklch(0.7 0.25 150);
+  --chart-1: oklch(0.7 0.25 150);
+  --chart-2: oklch(0.65 0.22 180);
+  --chart-3: oklch(0.7 0.25 320);
+  --chart-4: oklch(0.75 0.2 200);
+  --chart-5: oklch(0.6 0.25 0);
+  --radius: 0.5rem;
+  --sidebar: oklch(0.12 0.02 180);
+  --sidebar-foreground: oklch(0.85 0.15 150);
+  --sidebar-primary: oklch(0.7 0.25 150);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.15 0.05 180);
+  --sidebar-accent-foreground: oklch(0.85 0.15 150);
+  --sidebar-border: oklch(0.3 0.15 150);
+  --sidebar-ring: oklch(0.7 0.25 150);
+
+  /* Neon specific colors */
+  --neon-green: #00ff41;
+  --neon-cyan: #00ffff;
+  --neon-pink: #ff00ff;
+  --neon-purple: #9d00ff;
+  --dark-bg: #0a0a0a;
+  --darker-bg: #050505;
 }
 
 .dark {
-  /* Dark mode colors with blue/indigo theme */
-  --background: oklch(0.13 0.02 250);
-  --foreground: oklch(0.97 0.01 250);
-  --card: oklch(0.15 0.02 250);
-  --card-foreground: oklch(0.97 0.01 250);
-  --popover: oklch(0.13 0.02 250);
-  --popover-foreground: oklch(0.97 0.01 250);
-  --primary: oklch(0.6 0.22 250);
-  --primary-foreground: oklch(0.99 0.005 240);
-  --secondary: oklch(0.22 0.03 250);
-  --secondary-foreground: oklch(0.97 0.01 250);
-  --muted: oklch(0.22 0.03 250);
-  --muted-foreground: oklch(0.65 0.02 250);
-  --accent: oklch(0.25 0.04 265);
-  --accent-foreground: oklch(0.97 0.01 250);
-  --destructive: oklch(0.5 0.2 25);
-  --destructive-foreground: oklch(0.99 0.005 240);
-  --border: oklch(0.25 0.03 250);
-  --input: oklch(0.25 0.03 250);
-  --ring: oklch(0.6 0.22 250);
-  --chart-1: oklch(0.6 0.22 250);
-  --chart-2: oklch(0.65 0.2 270);
-  --chart-3: oklch(0.7 0.18 230);
-  --chart-4: oklch(0.55 0.15 290);
-  --chart-5: oklch(0.5 0.25 240);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  /* Dark mode (same as light mode for cyberpunk theme) */
+  --background: oklch(0.1 0 0);
+  --foreground: oklch(0.85 0.15 150);
+  --card: oklch(0.12 0.02 180);
+  --card-foreground: oklch(0.85 0.15 150);
+  --popover: oklch(0.12 0.02 180);
+  --popover-foreground: oklch(0.85 0.15 150);
+  --primary: oklch(0.7 0.25 150);
+  --primary-foreground: oklch(0.1 0 0);
+  --secondary: oklch(0.65 0.22 180);
+  --secondary-foreground: oklch(0.1 0 0);
+  --muted: oklch(0.15 0.02 180);
+  --muted-foreground: oklch(0.6 0.12 150);
+  --accent: oklch(0.7 0.25 320);
+  --accent-foreground: oklch(0.1 0 0);
+  --destructive: oklch(0.6 0.25 0);
+  --destructive-foreground: oklch(0.1 0 0);
+  --border: oklch(0.3 0.15 150);
+  --input: oklch(0.15 0.05 180);
+  --ring: oklch(0.7 0.25 150);
+  --chart-1: oklch(0.7 0.25 150);
+  --chart-2: oklch(0.65 0.22 180);
+  --chart-3: oklch(0.7 0.25 320);
+  --chart-4: oklch(0.75 0.2 200);
+  --chart-5: oklch(0.6 0.25 0);
+  --sidebar: oklch(0.12 0.02 180);
+  --sidebar-foreground: oklch(0.85 0.15 150);
+  --sidebar-primary: oklch(0.7 0.25 150);
+  --sidebar-primary-foreground: oklch(0.1 0 0);
+  --sidebar-accent: oklch(0.15 0.05 180);
+  --sidebar-accent-foreground: oklch(0.85 0.15 150);
+  --sidebar-border: oklch(0.3 0.15 150);
+  --sidebar-ring: oklch(0.7 0.25 150);
 }
 
 @theme inline {
@@ -127,11 +135,16 @@
 
 
 .file-metadata-card {
-  @apply bg-white rounded-xl border-2 border-gray-200 shadow-lg overflow-hidden mb-6;
+  @apply rounded-xl border-2 shadow-lg overflow-hidden mb-6;
+  background: rgba(10, 10, 10, 0.9);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
 
 .card-header {
-  @apply bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 px-6 py-4;
+  @apply border-b px-6 py-4;
+  background: linear-gradient(135deg, rgba(0, 255, 65, 0.1), rgba(0, 255, 255, 0.1));
+  border-bottom-color: var(--neon-green);
 }
 
 .header-content {
@@ -139,7 +152,9 @@
 }
 
 .card-title {
-  @apply text-xl font-semibold text-gray-900;
+  @apply text-xl font-semibold;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
 }
 
 .card-body {
@@ -147,7 +162,8 @@
 }
 
 .info-row {
-  @apply flex justify-between items-start py-3 border-b border-gray-100;
+  @apply flex justify-between items-start py-3 border-b;
+  border-bottom-color: rgba(0, 255, 65, 0.2);
 }
 
 .info-row.no-border {
@@ -155,9 +171,224 @@
 }
 
 .info-label {
-  @apply text-sm font-medium text-gray-600;
+  @apply text-sm font-medium;
+  color: var(--neon-cyan);
 }
 
 .info-value {
-  @apply text-sm text-gray-900 font-semibold text-right ml-4;
+  @apply text-sm font-semibold text-right ml-4;
+  color: var(--neon-green);
+}
+
+/* Cyberpunk/Matrix Animations */
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px currentColor) drop-shadow(0 0 15px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 25px currentColor);
+  }
+}
+
+@keyframes neon-border {
+  0%, 100% {
+    box-shadow: 0 0 5px currentColor, 0 0 15px currentColor, inset 0 0 5px currentColor;
+  }
+  50% {
+    box-shadow: 0 0 10px currentColor, 0 0 25px currentColor, inset 0 0 10px currentColor;
+  }
+}
+
+@keyframes scanline {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@keyframes encrypt {
+  0% {
+    content: "▓▓▓▓▓▓▓▓";
+  }
+  25% {
+    content: "▓▓▓▓░░░░";
+  }
+  50% {
+    content: "▓▓░░░░░░";
+  }
+  75% {
+    content: "▓░░░░░░░";
+  }
+  100% {
+    content: "░░░░░░░░";
+  }
+}
+
+@keyframes compress {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5) rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.2) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes decompress {
+  0% {
+    transform: scale(0.2) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(0.5) rotate(180deg);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+@keyframes data-stream {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+@keyframes circuit {
+  0%, 100% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Utility classes for animations */
+.glitch {
+  animation: glitch 0.3s infinite;
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+.neon-border {
+  animation: neon-border 2s ease-in-out infinite;
+}
+
+.scanline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(transparent, var(--neon-cyan), transparent);
+  animation: scanline 4s linear infinite;
+  opacity: 0.5;
+}
+
+.matrix-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.matrix-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(transparent 50%, rgba(0, 255, 65, 0.03) 50%),
+    linear-gradient(90deg, transparent 50%, rgba(0, 255, 65, 0.03) 50%);
+  background-size: 4px 4px;
+  pointer-events: none;
+}
+
+.neon-text {
+  text-shadow:
+    0 0 10px currentColor,
+    0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+.neon-box {
+  box-shadow:
+    0 0 5px currentColor,
+    0 0 15px currentColor,
+    inset 0 0 5px currentColor;
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(0, 255, 65, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
