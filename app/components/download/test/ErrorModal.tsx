@@ -50,10 +50,10 @@ export function ErrorModal({ fullScreen, title, description, children, onClose }
             onClick={onClose}
             className="absolute top-4 right-4 font-bold text-2xl transition-all"
             style={{ color: 'var(--neon-pink)' }}
-            onMouseEnter={(e) => {
+            onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.currentTarget.style.textShadow = '0 0 10px var(--neon-pink)';
             }}
-            onMouseLeave={(e) => {
+            onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.currentTarget.style.textShadow = 'none';
             }}
           >

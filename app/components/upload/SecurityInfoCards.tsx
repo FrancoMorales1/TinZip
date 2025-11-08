@@ -10,11 +10,11 @@ export default function SecurityInfoCards() {
              borderColor: 'rgba(0, 255, 65, 0.3)',
              boxShadow: '0 0 15px rgba(0, 255, 65, 0.2)'
            }}
-           onMouseEnter={(e) => {
+           onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'var(--neon-green)';
              e.currentTarget.style.boxShadow = '0 0 25px rgba(0, 255, 65, 0.4)';
            }}
-           onMouseLeave={(e) => {
+           onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'rgba(0, 255, 65, 0.3)';
              e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.2)';
            }}>
@@ -46,11 +46,11 @@ export default function SecurityInfoCards() {
              borderColor: 'rgba(0, 255, 255, 0.3)',
              boxShadow: '0 0 15px rgba(0, 255, 255, 0.2)'
            }}
-           onMouseEnter={(e) => {
+           onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'var(--neon-cyan)';
              e.currentTarget.style.boxShadow = '0 0 25px rgba(0, 255, 255, 0.4)';
            }}
-           onMouseLeave={(e) => {
+           onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.3)';
              e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.2)';
            }}>
@@ -84,11 +84,11 @@ export default function SecurityInfoCards() {
              borderColor: 'rgba(157, 0, 255, 0.3)',
              boxShadow: '0 0 15px rgba(157, 0, 255, 0.2)'
            }}
-           onMouseEnter={(e) => {
+           onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'var(--neon-purple)';
              e.currentTarget.style.boxShadow = '0 0 25px rgba(157, 0, 255, 0.4)';
            }}
-           onMouseLeave={(e) => {
+           onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
              e.currentTarget.style.borderColor = 'rgba(157, 0, 255, 0.3)';
              e.currentTarget.style.boxShadow = '0 0 15px rgba(157, 0, 255, 0.2)';
            }}>

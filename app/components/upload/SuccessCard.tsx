@@ -56,11 +56,11 @@ export function SuccessCard({ link, password, onClose }: SuccessCardProps) {
              textDecoration: 'none',
              backgroundColor: 'rgba(0, 255, 65, 0.05)'
            }}
-           onMouseEnter={(e) => {
+           onMouseEnter={(e: React.MouseEvent<HTMLAnchorElement>) => {
              e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
              e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 255, 65, 0.3)';
            }}
-           onMouseLeave={(e) => {
+           onMouseLeave={(e: React.MouseEvent<HTMLAnchorElement>) => {
              e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.05)';
              e.currentTarget.style.boxShadow = 'none';
            }}>
@@ -77,11 +77,11 @@ export function SuccessCard({ link, password, onClose }: SuccessCardProps) {
           color: 'var(--neon-cyan)',
           boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)'
         }}
-        onMouseEnter={(e) => {
+        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.2)';
           e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.6)';
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.1)';
           e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
         }}

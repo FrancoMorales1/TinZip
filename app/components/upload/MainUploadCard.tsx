@@ -102,11 +102,11 @@ export default function MainUploadCard() {
                        color: 'var(--neon-green)',
                        backgroundColor: 'rgba(0, 255, 255, 0.05)'
                      }}
-                     onFocus={(e: any) => {
+                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'var(--neon-cyan)';
                        e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
                      }}
-                     onBlur={(e: any) => {
+                     onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                        e.target.style.boxShadow = 'none';
                      }} />
@@ -127,11 +127,11 @@ export default function MainUploadCard() {
                        color: 'var(--neon-green)',
                        backgroundColor: 'rgba(0, 255, 255, 0.05)'
                      }}
-                     onFocus={(e: any) => {
+                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'var(--neon-cyan)';
                        e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
                      }}
-                     onBlur={(e: any) => {
+                     onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                        e.target.style.boxShadow = 'none';
                      }} />
@@ -156,11 +156,11 @@ export default function MainUploadCard() {
                     color: 'var(--neon-green)',
                     backgroundColor: 'rgba(0, 255, 255, 0.05)'
                   }}
-                  onFocus={(e: any) => {
+                  onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                     e.target.style.borderColor = 'var(--neon-cyan)';
                     e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
                   }}
-                  onBlur={(e: any) => {
+                  onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                     e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                     e.target.style.boxShadow = 'none';
                   }}
@@ -174,11 +174,11 @@ export default function MainUploadCard() {
                     borderColor: 'var(--neon-purple)',
                     color: 'var(--neon-purple)'
                   }}
-                  onMouseEnter={(e) => {
+                  onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.currentTarget.style.backgroundColor = 'rgba(157, 0, 255, 0.2)';
                     e.currentTarget.style.boxShadow = '0 0 15px rgba(157, 0, 255, 0.5)';
                   }}
-                  onMouseLeave={(e) => {
+                  onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.currentTarget.style.backgroundColor = 'rgba(157, 0, 255, 0.1)';
                     e.currentTarget.style.boxShadow = 'none';
                   }}
@@ -203,11 +203,11 @@ export default function MainUploadCard() {
                        color: 'var(--neon-green)',
                        backgroundColor: 'rgba(0, 255, 255, 0.05)'
                      }}
-                     onFocus={(e: any) => {
+                     onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'var(--neon-cyan)';
                        e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
                      }}
-                     onBlur={(e: any) => {
+                     onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
                        e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                        e.target.style.boxShadow = 'none';
                      }} />
@@ -225,11 +225,11 @@ export default function MainUploadCard() {
                        color: 'var(--neon-green)',
                        backgroundColor: 'rgba(0, 255, 255, 0.05)'
                      }}
-                     onFocus={(e: any) => {
+                     onFocus={(e: React.FocusEvent<HTMLTextAreaElement>) => {
                        e.target.style.borderColor = 'var(--neon-cyan)';
                        e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
                      }}
-                     onBlur={(e: any) => {
+                     onBlur={(e: React.FocusEvent<HTMLTextAreaElement>) => {
                        e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
                        e.target.style.boxShadow = 'none';
                      }} />
@@ -241,13 +241,13 @@ export default function MainUploadCard() {
                    backgroundColor: fileError ? 'rgba(255, 0, 255, 0.05)' : 'rgba(0, 255, 255, 0.05)',
                    boxShadow: fileError ? '0 0 15px rgba(255, 0, 255, 0.3)' : 'none'
                  }}
-                 onMouseEnter={(e) => {
+                 onMouseEnter={(e: React.MouseEvent<HTMLDivElement>) => {
                    if (!fileError) {
                      e.currentTarget.style.borderColor = 'var(--neon-cyan)';
                      e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.4)';
                    }
                  }}
-                 onMouseLeave={(e) => {
+                 onMouseLeave={(e: React.MouseEvent<HTMLDivElement>) => {
                    if (!fileError) {
                      e.currentTarget.style.borderColor = 'rgba(0, 255, 255, 0.4)';
                      e.currentTarget.style.boxShadow = 'none';
@@ -317,13 +317,13 @@ export default function MainUploadCard() {
                   ? 'none'
                   : '0 0 20px rgba(0, 255, 65, 0.3)'
               }}
-              onMouseEnter={(e) => {
+              onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
                 if (!((!isValid || !dirty || isSubmitting || status === "uploading" || !!fileError || files.length === 0))) {
                   e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.2)';
                   e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 255, 65, 0.6)';
                 }
               }}
-              onMouseLeave={(e) => {
+              onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
                 if (!((!isValid || !dirty || isSubmitting || status === "uploading" || !!fileError || files.length === 0))) {
                   e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
                   e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 65, 0.3)';

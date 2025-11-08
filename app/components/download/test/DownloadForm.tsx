@@ -34,11 +34,11 @@ export function DownloadForm({ password, setPassword, downloading, onSubmit }: P
             color: 'var(--neon-green)',
             backgroundColor: 'rgba(0, 255, 255, 0.05)'
           }}
-          onFocus={(e) => {
+          onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
             e.target.style.borderColor = 'var(--neon-cyan)';
             e.target.style.boxShadow = '0 0 15px rgba(0, 255, 255, 0.4)';
           }}
-          onBlur={(e) => {
+          onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
             e.target.style.borderColor = 'rgba(0, 255, 255, 0.3)';
             e.target.style.boxShadow = 'none';
           }}
@@ -55,13 +55,13 @@ export function DownloadForm({ password, setPassword, downloading, onSubmit }: P
           cursor: (downloading || !password) ? 'not-allowed' : 'pointer',
           boxShadow: (downloading || !password) ? 'none' : '0 0 20px rgba(0, 255, 65, 0.3)'
         }}
-        onMouseEnter={(e) => {
+        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
           if (!(downloading || !password)) {
             e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.2)';
             e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 255, 65, 0.6)';
           }
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
           if (!(downloading || !password)) {
             e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
             e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 65, 0.3)';

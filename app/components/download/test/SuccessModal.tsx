@@ -74,11 +74,11 @@ export function SuccessModal({ metadata, onClose, onDownload }: Props) {
                   color: 'var(--neon-green)',
                   boxShadow: '0 0 20px rgba(0, 255, 65, 0.3)'
                 }}
-                onMouseEnter={(e) => {
+                onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.2)';
                   e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 255, 65, 0.6)';
                 }}
-                onMouseLeave={(e) => {
+                onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.currentTarget.style.backgroundColor = 'rgba(0, 255, 65, 0.1)';
                   e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 65, 0.3)';
                 }}
@@ -95,11 +95,11 @@ export function SuccessModal({ metadata, onClose, onDownload }: Props) {
                   color: 'var(--neon-purple)',
                   boxShadow: '0 0 20px rgba(157, 0, 255, 0.3)'
                 }}
-                onMouseEnter={(e) => {
+                onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.currentTarget.style.backgroundColor = 'rgba(157, 0, 255, 0.2)';
                   e.currentTarget.style.boxShadow = '0 0 30px rgba(157, 0, 255, 0.6)';
                 }}
-                onMouseLeave={(e) => {
+                onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.currentTarget.style.backgroundColor = 'rgba(157, 0, 255, 0.1)';
                   e.currentTarget.style.boxShadow = '0 0 20px rgba(157, 0, 255, 0.3)';
                 }}

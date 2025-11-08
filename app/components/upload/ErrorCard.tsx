@@ -52,11 +52,11 @@ export function ErrorCard({ message, onClose }: ErrorCardProps) {
           color: 'var(--neon-cyan)',
           boxShadow: '0 0 20px rgba(0, 255, 255, 0.3)'
         }}
-        onMouseEnter={(e) => {
+        onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.2)';
           e.currentTarget.style.boxShadow = '0 0 30px rgba(0, 255, 255, 0.6)';
         }}
-        onMouseLeave={(e) => {
+        onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.currentTarget.style.backgroundColor = 'rgba(0, 255, 255, 0.1)';
           e.currentTarget.style.boxShadow = '0 0 20px rgba(0, 255, 255, 0.3)';
         }}
