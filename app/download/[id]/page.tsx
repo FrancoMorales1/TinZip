@@ -193,6 +193,7 @@ import { ExpirationWarning } from "@/app/components/download/test/ExpirationWarn
 import { InvalidPassword } from "@/app/components/download/test/InvalidPassword";
 import { FileNotFound } from "@/app/components/download/test/FileNotFound";
 import { use } from "react";
+import { hashPassword } from "@/utils/hashPassword";
 
 type FileMetadata = {
   id: string;
@@ -227,7 +228,8 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
 
     try {
       // Hash de contraseña
-      const res = await fetch(`/api/validate/${id}?hash=${password}`);
+      const password_hash = await hashPassword(password)
+      const res = await fetch(`/api/validate/${id}?hash=${password_hash}`);
       const data = await res.json();
 
       if (!res.ok) {

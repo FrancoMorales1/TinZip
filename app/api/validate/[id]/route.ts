@@ -23,6 +23,9 @@ export async function GET(
     console.log("RECORD ES ", record)
     // Si el archivo no existe o si el archivo existe pero la contraseña es invalida
     if (!record || record.passwordHash !== hashed_password) {
+      console.log('problema 1');
+      console.log('password hash recibida: ', hashed_password);
+      console.log('password hash guardado: ', record?.passwordHash)
       return NextResponse.json({ response: "invalid", file: null }, { status: 200 });
     }
     // Si el archivo esta expirado, devuelvo valid porq la password es correcta pero expiro

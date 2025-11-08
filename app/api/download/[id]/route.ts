@@ -40,7 +40,6 @@ export async function GET(
     console.log('RECORD ES ', record);
     // const file = record.gridFsId;
     const file = await getRecordFile(id);
-    console.log('FILE ES ',file);
     if (!file) return NextResponse.json({ response: "Error consiguiendo el archivo" }, { status: 500 }); 
     const downloadStream = bucket.openDownloadStream(file.gridFsId);
     // Convertir el stream de Node.js a un Web Stream para NextResponse
