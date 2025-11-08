@@ -29,6 +29,6 @@ export async function getRecordForPasswordCheck(id: string): Promise<IFileRecord
   await dbConnect();
   // Mongoose es lo suficientemente inteligente para saber que .select()
   // sigue devolviendo el mismo tipo de documento
-  const file = await FileRecord.findById(id).select('+passwordHash');
+  const file = await FileRecord.findById(id).select('+passwordHash+isExpired');
   return file;
 }

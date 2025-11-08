@@ -22,7 +22,7 @@ export default function MainUploadCard() {
           destinatarios: "bruno_go_br_br@gmail.com",
           password: "",
           title: "Titulo por defecto",
-          description: "Albion Online es un MMORPG no lineal, donde escribes tu propia historia sin limitarte a seguir un camino prefijado. Explora un amplio mundo abierto con 5 biomas únicos; todo lo que hagas tendrá repercusiones en el mundo. Con la economía orientada al jugador de Albion, los jugadores crean prácticamente todo el equipo a partir de los recursos que consiguen. El equipo que llevas define quién eres; cambia de arma y armadura para pasar de caballero a mago, o juega como una mezcla de ambas clases. Aventúrate en el mundo abierto enfrentándote a los habitantes y criaturas de Albion, inicia expediciones o adéntrate en mazmorras donde encontrarás enemigos aún más difíciles. Enfréntate a otros jugadores en encuentros en el mundo abierto, lucha por territorios o por ciudades enteras en batallas tácticas, relájate en tu isla privada donde podrás construir un hogar, cultivar cosechas y criar animales. Únete a un gremio; todo es mejor cuando se trabaja en grupo. Adéntrate ya en el mundo de Albion y escribe tu propia historia. ",
+          description: "Albion Online es un MMORPG no lineal, donde escribes tu propia historia sin limitarte a seguir un camino prefijado.",
         }}
         validationSchema={uploadSchema}
         onSubmit={async (values, { resetForm }) => {
@@ -51,7 +51,7 @@ export default function MainUploadCard() {
           setFiles([])
         }}
       >
-        {({ isSubmitting, setFieldValue, values }) => (
+        {({ isSubmitting, isValid, dirty, setFieldValue, values }) => (
           <Form className="space-y-4">
             <div>
               <label className="block text-sm font-medium">Origen *</label>
@@ -120,8 +120,13 @@ export default function MainUploadCard() {
 
             <button
               type="submit"
-              disabled={isSubmitting || status === "uploading"}
-              className="w-full bg-blue-600 text-white rounded-lg py-2 font-semibold hover:bg-blue-700 transition"
+              disabled={!isValid || !dirty || isSubmitting || status === "uploading"}
+              className={`
+                w-full rounded-lg py-2 font-semibold transition
+                ${!isValid || !dirty || isSubmitting || status === "uploading"
+                  ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+                  : "bg-blue-600 text-white hover:bg-blue-700"}
+              `}
             >
               {status === "uploading" ? `Subiendo... ${progress}%` : "Comprimir y Enviar"}
             </button>
