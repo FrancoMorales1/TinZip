@@ -15,8 +15,9 @@ export function DownloadForm({
   onSubmit,
 }: DownloadFormProps) {
   return (
-      <div className="bg-card rounded-xl border-2 border-border shadow-lg overflow-hidden">      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border-b border-gray-200 px-6 py-4">
-        <div className="flex items-center gap-2">
+      <div className="bg-card rounded-xl border-2 border-border shadow-lg overflow-hidden">      
+        <div className="bg-secondary border-b border-border px-6 py-4">
+          <div className="flex items-center gap-2">
           <svg /* Icono de candado */ >...</svg>
           <h2 className="text-xl font-semibold text-foreground">Descargar Archivo</h2>
         </div>

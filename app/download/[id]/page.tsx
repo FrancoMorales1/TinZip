@@ -60,7 +60,7 @@ export default function DownloadPage({ params }: { params: Promise<{ id: string 
       }
 
       // Éxito
-      setMetadata(data);
+      setMetadata(data.file);
       setStatus("success");
     } catch (err: any) {
       console.error(err);

@@ -58,6 +58,7 @@ export async function GET(
         createdAt: recordInfo.createdAt,
         expiresAt: expiresAt 
       },
+      staus: 200,
     });
   } catch (error) {
     // Si se ingresa un ID de longitud invalida, devuelve como si la contraseña fuese incorrecta
