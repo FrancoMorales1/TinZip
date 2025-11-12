@@ -11,7 +11,6 @@ export function FileMetadataDisplay({ metadata }: FileMetadataDisplayProps) {
     <div className="file-metadata-card">
       <div className="card-header">
         <div className="header-content">
-          <svg /* Icono de archivo */ >...</svg>
           <h2 className="card-title">Información del Archivo</h2>
         </div>
       </div>
