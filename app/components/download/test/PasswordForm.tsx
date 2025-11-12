@@ -21,8 +21,9 @@ export function PasswordForm({ password, setPassword, downloading, onSubmit }: P
       <button
         onClick={onSubmit}
         disabled={downloading || !password}
-        className={`w-full py-2 rounded font-semibold ${
-          downloading ? "bg-gray-300 text-gray-500" : "bg-blue-600 text-white hover:bg-blue-700"
+        className={`w-full py-2 rounded font-semibold ${downloading || !password
+          ? "bg-gray-300 text-gray-500 cursor-not-allowed"
+          : "bg-blue-600 text-white hover:bg-blue-700 hover:shadow-md hover:scale-[1.02] active:scale-[0.97]"
         }`}
       >
         {downloading ? "Verificando..." : "Verificar"}

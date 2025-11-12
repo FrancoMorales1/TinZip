@@ -60,9 +60,17 @@ export function SuccessDownloadModal({ show, onRedirect }: SuccessModalProps) {
         <div className="space-y-3">
           <button
             onClick={onRedirect}
-            className="w-full h-11 flex items-center justify-center px-4 text-base font-semibold text-primary-foreground bg-primary rounded-lg hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 transition-colors"
+            className="
+              w-full h-11 flex items-center justify-center px-4 
+              text-base font-semibold text-primary-foreground 
+              bg-primary rounded-lg 
+              transition-all duration-200 
+              hover:bg-primary/90 hover:shadow-lg hover:scale-[1.03] 
+              active:scale-[0.97]
+              focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2
+            "
           >
-            Ir a la pagina principal
+            Ir a la página principal
           </button>
         </div>
       </div>

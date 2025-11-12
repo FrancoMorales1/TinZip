@@ -12,10 +12,15 @@ export function SuccessCard({ link, password, onClose }: SuccessCardProps) {
     <a href={link} className="text-primary underline mb-4 block">{link}</a>
     <button
       onClick={onClose}
-       className="bg-primary text-primary-foreground rounded-lg px-4 py-2 hover:bg-primary/90 transition"
-      >
+      className="
+        bg-primary text-primary-foreground rounded-lg px-4 py-2 font-semibold
+        transition-all duration-200
+        hover:bg-primary/80 hover:shadow-lg hover:scale-[1.03]
+        active:bg-primary/90 active:scale-[0.97]
+      "
+    >
       Subir otro archivo
-      </button>
+    </button>
     </div>
     );
 }

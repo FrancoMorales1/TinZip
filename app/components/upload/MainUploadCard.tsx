@@ -129,7 +129,12 @@ export default function MainUploadCard() {
                 <button
                   type="button"
                   onClick={() => setFieldValue("password", generateSecurePassword(12))}
-                  className="bg-secondary text-muted-foreground rounded-lg px-3 py-2 font-medium hover:bg-input transition"
+                  className="
+                    bg-secondary text-muted-foreground rounded-lg px-3 py-2 font-medium
+                    transition-all duration-200
+                    hover:bg-primary/10 hover:text-foreground hover:scale-[1.03] hover:shadow-md
+                    active:scale-[0.97]
+                  "
                 >
                   Generar
                 </button>
