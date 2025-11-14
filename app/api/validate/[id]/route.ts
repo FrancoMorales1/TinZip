@@ -3,7 +3,6 @@ import { getFileRecordById, getRecordForPasswordCheck } from "@/lib/database/Fil
 import mongoose from "mongoose";
 
 export interface FileRecordInfoApiResponse {
-  ownerEmail: string,
   fileSizeInBytes: number,
   title: string,
   description?: string,
@@ -51,7 +50,6 @@ export async function GET(
     return NextResponse.json({
       response: "valid",
       file: {
-        ownerEmail: recordInfo.ownerEmail,
         fileSizeInBytes: recordInfo.fileSizeInBytes,
         title: recordInfo.title,
         description: recordInfo.description || '',

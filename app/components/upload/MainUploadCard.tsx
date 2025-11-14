@@ -70,8 +70,6 @@ export default function MainUploadCard() {
       )}
       <Formik
         initialValues={{
-          origin: "",
-          destinatarios: "",
           password: "",
           title: "",
           description: "",
@@ -86,13 +84,7 @@ export default function MainUploadCard() {
           const password_hash = await hashPassword(values.password)
           const encryptedZip = await zipAndEncrypt(files, values.password)
 
-          const recipients = values.destinatarios
-            ? values.destinatarios.split(",").map(e => e.trim())
-            : []
-
           await uploadFiles({
-            origin: values.origin,
-            recipients,
             title: values.title,
             description: values.description,
             password_hash,
@@ -105,18 +97,6 @@ export default function MainUploadCard() {
       >
         {({ isSubmitting, isValid, dirty, setFieldValue, values }) => (
           <Form className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium">Origen *</label>
-              <Field name="origin" type="text" placeholder="el_big_tin@bigtin.tin" className="w-full border border-border rounded-lg p-2 bg-background focus:ring-2 focus:ring-ring" />
-              <ErrorMessage name="origin" component="p" className="text-destructive text-sm" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium">Destinatarios</label>
-              <Field name="destinatarios" type="text" placeholder="bruno_go_br_br@gmail.com" className="w-full border border-border rounded-lg p-2 bg-background focus:ring-2 focus:ring-ring" />
-              <ErrorMessage name="destinatarios" component="p" className="text-destructive text-sm" />
-            </div>
-
             <div>
               <label className="block text-sm font-medium">Contraseña *</label>
               <div className="flex gap-2">

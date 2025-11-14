@@ -1,6 +1,4 @@
 export interface UploadFormValues {
-  origin: string                // email o nombre del remitente (obligatorio)
-  recipients?: string[]         // emails de destinatarios (opcional)
   password: string              // contraseña (obligatorio o generada)
   title: string                // opcional
   description?: string          // opcional
@@ -8,8 +6,6 @@ export interface UploadFormValues {
 }
 
 export interface UploadRequestData {
-  origin: string
-  recipients?: string[]
   title: string
   description?: string
   password_hash: string         // contraseña hasheada antes de enviar

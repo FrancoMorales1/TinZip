@@ -1,8 +1,6 @@
 import mongoose, { Schema, Document, Model } from 'mongoose';
 
 export interface IFileRecord {
-  ownerEmail: string;
-  recipientEmails?: string[];
   fileSizeInBytes: number;
   title: string;
   description?: string;
@@ -21,13 +19,6 @@ export interface IFileRecordDocument extends IFileRecord, Document {
 }
 
 const FileRecordSchema: Schema<IFileRecordDocument> = new Schema({
-  ownerEmail: {
-    type: String,
-    required: true,
-  },
-  recipientEmails: {
-    type: [String],
-  },
   fileSizeInBytes: {
     type: Number,
     required: true,
