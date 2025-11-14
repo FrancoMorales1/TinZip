@@ -65,28 +65,6 @@ export function validateFiles(files: File[] | null | undefined) {
  * - description: opcional, hasta 500 chars
  */
 export const uploadSchema = Yup.object().shape({
-  origin: Yup.string()
-    .required("Origen es obligatorio")
-    .test(
-      "origin-email",
-      "Origen debe ser un email válido (sin @).",
-      (value) => {
-        if (!value) return false
-        return isValidEmail(value)
-      }
-    ),
-  destinatarios: Yup.string()
-    .nullable()
-    .test(
-      "destinatarios-emails",
-      "Los destinatarios deben ser emails válidos separados por comas.",
-      (value) => {
-        if (!value) return true
-        const arr = parseDestinatarios(value)
-        if (arr.length === 0) return true
-        return arr.every((e) => isValidEmail(e))
-      }
-    ),
   password: Yup.string()
     .required("La contraseña es obligatoria")
     .test(
