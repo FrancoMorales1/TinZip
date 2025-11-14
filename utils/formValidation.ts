@@ -6,21 +6,6 @@ export const MAX_FILE_BYTES = 200 * 1024 * 1024 // 200 MB por archivo (ajustable
 export const MIN_FILES = 1
 export const MAX_FILES = 20 // si querés limitar número de archivos
 
-// helper para validar emails simples
-export function isValidEmail(email: string) {
-  const re = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/
-  return re.test(email.trim())
-}
-
-
-// convierte string de destinatarios "a@x.com, b@y.com" -> string[]
-export function parseDestinatarios(input?: string | null): string[] {
-  if (!input) return []
-  return input
-    .split(",")
-    .map((s) => s.trim())
-    .filter(Boolean)
-}
 
 // Validación de archivos: cantidad y tamaño total
 export function validateFiles(files: File[] | null | undefined) {
