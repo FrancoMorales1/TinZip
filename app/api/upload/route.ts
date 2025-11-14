@@ -23,11 +23,10 @@ const url = `${process.env.NODE_ENV == 'development' ? 'http://localhost:3000' :
 
     if (!file) return new Response(JSON.stringify({ error: 'No se subió ningún archivo' }), { status: 400 });
 
-    const ownerEmail = formData.get('origin')?.toString();
     const passwordHash = formData.get('password_hash')?.toString();
     const title = formData.get('title')?.toString();
 
-    if (!ownerEmail || !passwordHash || !title)
+    if (!passwordHash || !title)
       return new Response(JSON.stringify({ error: 'Faltan campos obligatorios' }), { status: 400 });
 
     // --- Lógica para guardar en GridFS ---
@@ -58,11 +57,9 @@ const url = `${process.env.NODE_ENV == 'development' ? 'http://localhost:3000' :
 
     const fileData: IFileRecord = {
       fileSizeInBytes: file.size,
-      ownerEmail,
       passwordHash,
       title: formData.get('title')?.toString() || "compressed_file",
       description: formData.get('description')?.toString(),
-      recipientEmails: formData.get('recipients') ? JSON.parse(formData.get('recipients')!.toString()) : [],
       gridFsId: gridFsId
     };
 

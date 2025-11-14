@@ -37,7 +37,6 @@ export async function GET(
     const bucket = new GridFSBucket(db, {
       bucketName: 'archivos'
     });
-    console.log('RECORD ES ', record);
     // const file = record.gridFsId;
     const file = await getRecordFile(id);
     if (!file) return NextResponse.json({ response: "Error consiguiendo el archivo" }, { status: 500 }); 
