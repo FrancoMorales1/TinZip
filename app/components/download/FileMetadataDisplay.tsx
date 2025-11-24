@@ -20,6 +20,10 @@ export function FileMetadataDisplay({ metadata }: FileMetadataDisplayProps) {
           <span className="info-value">{metadata.title}</span>
         </div>
         <div className="info-row">
+          <span className="info-label">Descripción</span>
+          <span className="info-value">{metadata.description}</span>
+        </div>
+        <div className="info-row">
           <span className="info-label">Tamaño</span>
           <span className="info-value">{formatFileSize(metadata.fileSizeInBytes)}</span>
         </div>
